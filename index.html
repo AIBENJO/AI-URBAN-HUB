@@ -480,6 +480,101 @@ d">קטגוריה</label>
         document.addEventListener('keydown', function(e) {
             // Implement keyboard shortcuts if needed
         });
+
+                // ===== STAGE 3: FUNCTIONALITY + LOCALSTORAGE =====
+        
+        // Form Validation
+        const form = document.querySelector('form');
+        const requiredFields = form.querySelectorAll('[required]');
+        
+        // Real-time validation
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.classList.add('error');
+                    this.setAttribute('aria-invalid', 'true');
+                } else {
+                    this.classList.remove('error');
+                    this.classList.add('success');
+                    this.setAttribute('aria-invalid', 'false');
+                }
+            });
+        });
+        
+        // LocalStorage - Auto-save form data
+        const formInputs = form.querySelectorAll('input, textarea, select');
+        
+        // Load saved data
+        formInputs.forEach(input => {
+            const savedValue = localStorage.getItem(input.name);
+            if (savedValue && input.type !== 'submit') {
+                input.value = savedValue;
+            }
+        });
+        
+        // Save on input
+        formInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.type !== 'submit') {
+                    localStorage.setItem(this.name, this.value);
+                }
+            });
+        });
+        
+        // Enhanced form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all required fields
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            if (isValid) {
+                // Save to LocalStorage
+                const formData = {};
+                formInputs.forEach(input => {
+                    if (input.type !== 'submit') {
+                        formData[input.name] = input.value;
+                    }
+                });
+                
+                const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+                submissions.push({
+                    ...formData,
+                    timestamp: new Date().toISOString(),
+                    id: Date.now()
+                });
+                localStorage.setItem('submissions', JSON.stringify(submissions));
+                
+                showToast('הבקשה נשלחה בהצלחה!');
+                
+                // Clear form after 2 seconds
+                setTimeout(() => {
+                    form.reset();
+                    formInputs.forEach(input => {
+                        localStorage.removeItem(input.name);
+                    });
+                }, 2000);
+            } else {
+                showToast('נא למלא את כל השדות החובה');
+            }
+        });
+        
+        // Clear draft button
+        const resetButton = form.querySelector('[type="reset"]');
+        if (resetButton) {
+            resetButton.addEventListener('click', function() {
+                formInputs.forEach(input => {
+                    localStorage.removeItem(input.name);
+                });
+                showToast('הטיוטה נמחקה');
+            });
+        }
     </script>
 </body>
 </html>
