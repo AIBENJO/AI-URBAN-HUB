@@ -461,7 +461,33 @@ d">קטגוריה</label>
 
     <script>
         // Toast notification function
-        function showToast(message) {
+        
+                <!-- Stage 4: Legal + Privacy -->
+        <div class="mt-4 pt-4 border-t border-gray-300">
+            <div class="flex flex-wrap gap-4 justify-center text-sm">
+                <a href="#privacy" class="hover:text-tlv-light" aria-label="מדיניות פרטיות">
+                    מדיניות פרטיות
+                </a>
+                <span aria-hidden="true">|</span>
+                <a href="#terms" class="hover:text-tlv-light" aria-label="תנאי שימוש">
+                    תנאי שימוש
+                </a>
+                <span aria-hidden="true">|</span>
+                <a href="#accessibility" class="hover:text-tlv-light" aria-label="הצהרת נגישות">
+                    הצהרת נגישות
+                </a>
+                <span aria-hidden="true">|</span>
+                <a href="mailto:privacy@tel-aviv.gov.il" class="hover:text-tlv-light" aria-label="יצירת קשר בנושא פרטיות">
+                    פרטיות@תל-אביב.gov.il
+                </a>
+            </div>
+            <p class="text-xs text-center mt-3">
+                המידע שאתם מזינים נשמר באופן מקומי במכשירכם ואינו נשלח לשרת ללא הסכמתכם המפורשת.
+                <br>
+                בהגשת בקשה, אתם מאשרים את תנאי השימוש ומדיניות הפרטיות של העירייה.
+            </p>
+        </div>
+function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
