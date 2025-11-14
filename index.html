@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Urban Hub - פורטל בקשות AI עירוני</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tlv-blue': '#0F4C81',
+                        'tlv-light': '#4A9EDA',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f5f5f5; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-tlv-blue text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">🏛️ AI Urban Hub</h1>
+            <nav class="space-x-4 space-x-reverse">
+                <a href="#home" class="hover:underline">דף הבית</a>
+                <a href="#submit" class="hover:underline">הגשת בקשה</a>
+                <a href="#dashboard" class="hover:underline">דשבורד</a>
+                <a href="#voting" class="hover:underline">הצבעות</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <!-- Dashboard KPIs -->
+        <section id="dashboard" class="mb-8">
+            <h2 class="text-3xl font-bold mb-6 text-tlv-blue">📊 סטטיסטיקות</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-4xl font-bold text-tlv-blue">24</div>
+                    <div class="text-gray-600">סך בקשות</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-4xl font-bold text-yellow-500">8</div>
+                    <div class="text-gray-600">ממתינות לביקורת</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-4xl font-bold text-green-500">12</div>
+                    <div class="text-gray-600">אושרו החודש</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-4xl font-bold text-tlv-light">5</div>
+                    <div class="text-gray-600">בהצבעה</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Request Form -->
+        <section id="submit" class="mb-8">
+            <h2 class="text-3xl font-bold mb-6 text-tlv-blue">📝 הגשת בקשה חדשה</h2>
+            <form class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">כותרת הבקשה *</label>
+                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue" placeholder="הזן כותרת תיאורית...">
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">תיאור מפורט *</label>
+                    <textarea rows="4" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue" placeholder="תאר את הבקשה בפירוט..."></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">מחלקה *</label>
+                        <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue">
+                            <option>בחר מחלקה</option>
+                            <option>טכנולוגיה ומערכות מידע</option>
+                            <option>שירותים חברתיים</option>
+                            <option>תחבורה</option>
+                            <option>חינוך</option>
+                            <option>תרבות</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">סוג בקשה *</label>
+                        <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue">
+                            <option>פיילוט</option>
+                            <option>הטמעה מלאה</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">עלות פיילוט (אלפי ₪)</label>
+                        <input type="number" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue" placeholder="50">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">עלות הטמעה מלאה</label>
+                        <input type="number" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue" placeholder="500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">עלות שנתית</label>
+                        <input type="number" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue" placeholder="100">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">רמת סיכון</label>
+                    <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-tlv-blue">
+                        <option>נמוכה</option>
+                        <option selected>בינונית</option>
+                        <option>גבוהה</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-tlv-blue text-white p-4 rounded-lg font-bold hover:bg-tlv-light transition text-xl">
+                    ✅ הגש בקשה
+                </button>
+            </form>
+        </section>
+
+        <!-- Voting Board -->
+        <section id="voting" class="mb-8">
+            <h2 class="text-3xl font-bold mb-6 text-tlv-blue">🗳️ לוח הצבעות</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">צ'אטבוט AI לשירות תושבים</h3>
+                            <p class="text-gray-600 mb-3">מערכת AI לטיפול בפניות תושבים בזמן אמת</p>
+                            <div class="flex gap-4 text-sm">
+                                <span class="bg-tlv-blue text-white px-3 py-1 rounded">טכנולוגיה</span>
+                                <span class="bg-green-500 text-white px-3 py-1 rounded">סיכון נמוך</span>
+                                <span class="text-gray-600">₪250K</span>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-green-600">5/7</div>
+                            <div class="text-sm text-gray-600">הצבעות בעד</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                        <button class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">✓ אשר</button>
+                        <button class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">✗ דחה</button>
+                        <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600">? דורש הבהרה</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">ניתוח תמונות לזיהוי תקלות תשתית</h3>
+                            <p class="text-gray-600 mb-3">מערכת Computer Vision לזיהוי בורות ותקלות בכבישים</p>
+                            <div class="flex gap-4 text-sm">
+                                <span class="bg-tlv-blue text-white px-3 py-1 rounded">תחבורה</span>
+                                <span class="bg-yellow-500 text-white px-3 py-1 rounded">סיכון בינוני</span>
+                                <span class="text-gray-600">₪450K</span>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-yellow-600">3/7</div>
+                            <div class="text-sm text-gray-600">הצבעות בעד</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                        <button class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">✓ אשר</button>
+                        <button class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">✗ דחה</button>
+                        <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600">? דורש הבהרה</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6 text-center mt-12">
+        <p>© 2025 עיריית תל אביב-יפו | AI Urban Hub</p>
+    </footer>
+</body>
+</html>
